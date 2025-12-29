@@ -1,6 +1,6 @@
 # baekjoon-python
 
-beakjoon사이트에서 파이썬으로 문제를 푸는 과정을 보여주는 repository이다.
+beakjoon사이트에서 문제풀고 저장하는 곳
 
 - 언어 : Python
 - 사이트 : [Baekjoon Online Judge](https://www.acmicpc.net/)
