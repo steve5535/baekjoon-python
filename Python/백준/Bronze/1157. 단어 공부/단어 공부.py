@@ -1,23 +1,13 @@
-import sys
-input = sys.stdin.readline
+word = list(input().upper()) # 입력받은 단어를 대문자로 변환하고 리스트 형태로 저장
+dic = {} # 딕셔너리 생성
 
-word = input().strip().upper() # 입력값 줄바꿈 제거하고 대문자로 변환
-count = {} # 나온 문자 갯수 저장 딕셔너리
+for i in set(word): # 단어에 들어있는 알파벳을 넣어서 반복
+    dic[i] = word.count(i) # 딕셔너리에 key에는 i값(알파벳)을 value에는 사용된 알파벳의 개수로 저장
 
-for i in word:
-    if i in count: # 이미 있는 문자라면
-        count[i] += 1 # +1
-    else: # 아니라면(처음 나왔다면)
-        count[i] = 1 # 1로 초기화
+counts = list(dic.values()) # 딕셔너리에 저장된 value들(사용된 알파벳 개수)을 리스트형태로 저장
+max_count = max(counts) # 리스트에서 가장 큰값(가장 많이 사용된 알파벳 개수)을 저장
 
-max_value = max(count.values()) # 많이 등장한 횟수(딕셔너리에서 밸류가 가장 큰 수) 저장
-max_list = [] # 최댓값과 같은 문자를 저장할 리스트
-
-for j in count:
-    if count[j] == max_value: # 해당 문자의 밸류가 최댓값과 같으면
-        max_list.append(j) # 리스트에 저장
-
-if len(max_list) >= 2: # 최댓값이 여러 개면
-    print("?") # ? 출력
+if counts.count(max_count) > 1: # 리스트에 있는 값중에 가장큰 값이 1개 이상이면
+    print("?") # "?"를 출력
 else: # 아니라면
-    print(max_list[0]) # 가장 많이 나온 문자 출력
+    print(max(dic, key=dic.get)) # value가 가장 큰 값을 출력
